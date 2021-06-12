@@ -20,6 +20,9 @@ const questions = [
         }
     },
 // First Sections 
+//THEN this information is added to the sections of the README entitled 
+//Description, Installation, Usage, Contributing, and Tests
+
     // Description
     {
         type: 'input',
@@ -38,7 +41,7 @@ const questions = [
     {
         type: 'input',
         name: 'installation',
-        message: 'Please list any required packages to instal your application.',
+        message: 'Please list any required packages to instal your application. (Required)',
         validate: installValue => {
             if (installValue) {
                 return true;
@@ -66,7 +69,7 @@ const questions = [
     {
         type: 'input',
         name: 'contributing',
-        message: 'Please include the guidelines for contributing.',
+        message: 'Please include the guidelines for contributing. (Required)',
         validate: contributingValue => {
             if (contributingValue) {
                 return true;
@@ -80,7 +83,7 @@ const questions = [
     {
         type: 'input',
         name: 'tests',
-        message: 'Please include any test information for your application.',
+        message: 'Please include any test information for your application. (Required)',
         validate: testsValue => {
             if (testsValue) {
                 return true;
@@ -90,31 +93,67 @@ const questions = [
             }
         }
     },
-];    
-
-
 // License  
-        //a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under)
-    // Questions
-        // GitHub username
-            // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
-        // Email address
-            // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
+        //a badge for that license is added near the top of the README and a notice is added to the section of the README
+        // entitled License that explains which license the application is covered under)
+        {
+            type: 'checkbox',
+            name: 'license',
+            message: 'Please indicate the applicable license (Required)',
+            choices: ['MIT', 'GNU', 'Apache 2.0', 'ISC'],
+            default: 0,
+            validate: licenseChoice => {
+                if (licenseChoice) {
+                    return true;
+                } else {
+                    console.log('Please provide license information!');
+                    return false;
+                }
+            }
+        }, 
+// Questions
+    // GitHub username
+        // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Please enter your GitHub profile link. (Required)',
+        validate: githubUN => {
+            if (githubUN) {
+                return true;
+            } else {
+                console.log('Please enter your GitHub profile link!');
+                return false;
+            }
+        }
+    },
 
+    // Email address
+        // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Please enter your contact email. (Required)',
+        validate: githubUN => {
+            if (githubUN) {
+                return true;
+            } else {
+                console.log('Please enter your GitHub profile link!');
+                return false;
+            }
+        }
+    },
+];
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// template
+//console.log(`
+//         //     ==============
+//         //     Add New Credit
+//         //     ==============
+//         //     `);
+       
+            
+        
 
 
     
