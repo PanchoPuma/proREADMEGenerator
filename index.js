@@ -4,9 +4,23 @@ const inquirer = require('inquirer');
 const generatedPage = require('./src/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
-const questions = [];
 
-    //Title
+const questions = [
+//Title
+    {
+        type: 'input',
+        name: 'title',
+        message: 'Please provide a project title.  (Required)',
+        validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                console.log('Please provide a project title!');
+                return false;
+            }
+        }
+    },
+    
         // the title of my project
     // First Sections 
         // Description, 
@@ -22,6 +36,7 @@ const questions = [];
         // Email address
             // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
 
+            
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
