@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-//const generatedPage = require('./src/generateMarkdown.js');
+const generateMarkdown = require('./src/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -100,7 +100,7 @@ const questions = [
             type: 'checkbox',
             name: 'license',
             message: 'Please indicate the applicable license (Required)',
-            choices: ['MIT', 'GNU', 'Apache 2.0', 'ISC'],
+            choices: ['MIT', 'ISC','GNU', 'Apache 2.0',],
             default: 0,
             validate: licenseChoice => {
                 if (licenseChoice) {
@@ -176,7 +176,7 @@ function init() {
 
 // Function call to initialize app
 init()
-    // .then(answers => generatedPage(answers))
+    .then(answers => generateMarkdown(answers))
     // .then(generatedReadMe => writeToFile('README.md', generatedReadMe))
     // .catch(err => {
     //     console.log(err);
