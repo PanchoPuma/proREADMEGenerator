@@ -20,14 +20,28 @@ const questions = [
             }
         }
     },
-    
-        // the title of my project
-    // First Sections 
-        // Description, 
+// First Sections 
+    // Description
+    {
+        type: 'input',
+        name: 'description',
+        message: 'Provide a description of your application.  (Required)',
+        validate: descInput => {
+            if (descInput) {
+                return true;
+            } else {
+                console.log('Please enter a description!');
+                return false;
+            }
+        }
+    },
         // Installation, 
         // Usage, 
         // Contributing
         // Tests
+
+    
+
     // License  
         //a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under)
     // Questions
