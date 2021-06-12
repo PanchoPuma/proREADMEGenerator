@@ -1,10 +1,9 @@
 // TODO: Include packages needed for this application
 const fs = require('fs');
 const inquirer = require('inquirer');
-const generatedPage = require('./src/generateMarkdown.js');
+//const generatedPage = require('./src/generateMarkdown.js');
 
 // TODO: Create an array of questions for user input
-
 const questions = [
 //Title
     {
@@ -40,13 +39,6 @@ const questions = [
         type: 'input',
         name: 'installation',
         message: 'Please list any required packages to instal your application.',
-        when: ({ content }) => {
-            if (content.indexOf('Installation') > -1) {
-                return true;
-            } else {
-                return false;
-            }
-        },
         validate: installValue => {
             if (installValue) {
                 return true;
@@ -75,13 +67,6 @@ const questions = [
         type: 'input',
         name: 'contributing',
         message: 'Please include the guidelines for contributing.',
-        when: ({ content }) => {
-            if (content.indexOf('Contributing') > -1) {
-                return true;
-            } else {
-                return false;
-            }
-        },
         validate: contributingValue => {
             if (contributingValue) {
                 return true;
@@ -96,13 +81,6 @@ const questions = [
         type: 'input',
         name: 'tests',
         message: 'Please include any test information for your application.',
-        when: ({ content }) => {
-            if (content.indexOf('Tests') > -1) {
-                return true;
-            } else {
-                return false;
-            }
-        },
         validate: testsValue => {
             if (testsValue) {
                 return true;
@@ -111,27 +89,6 @@ const questions = [
                 return false;
             }
         }
-    },
-    // Validation checkbox 
-    {
-        type: 'checkbox',
-        name: 'content',
-        message: 'Any additional sections you want to include in the README?',
-        choices: [
-            {
-                name: 'Installation',
-                checked: false
-            },
-            {
-                name: 'Contributing',
-                checked: false
-            },
-            {
-                name: 'Tests',
-                checked: false
-            },
-            
-        ]
     },
 ];    
 
@@ -167,7 +124,9 @@ const questions = [
 function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    return inquirer.prompt(questions);
+};
 
 // Function call to initialize app
 init();
