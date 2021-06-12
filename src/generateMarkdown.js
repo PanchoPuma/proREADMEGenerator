@@ -12,13 +12,13 @@
     // If there is no license, return an empty string
     function renderLicenseLink(license) {
         if (license === "MIT") {
-            return `![${license} License](https://opensource.org/licenses/MIT)`;
+            return `[https://opensource.org/licenses/MIT]`;
         } else if (license === "GNU") {
-            return `![${license} License](https://www.gnu.org/licenses/gpl-3.0.en.html)`;
+            return `[[https://www.gnu.org/licenses/gpl-3.0.en.html]`;
         } else if (license === "ISC") {
-            return `![${license} License](https://www.isc.org/licenses/)`;
+            return `[https://www.isc.org/licenses/]`;
         } else if (license === "Apache 2.0") {
-            return `![${license} License](https://www.apache.org/licenses/LICENSE-2.0)`;
+            return `[https://www.apache.org/licenses/LICENSE-2.0]`;
         }
     }
 
@@ -124,7 +124,7 @@ function generateMarkdown(data) {
         },
         {
             header: 'Questions',
-            content: renderQuestionsSection(data.questions, data.github,)
+            content: renderQuestionsSection(data.email, data.github,)
         },
     ];
 
