@@ -132,10 +132,10 @@ const questions = [
         // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
     {
         type: 'input',
-        name: 'github',
+        name: 'email',
         message: 'Please enter your contact email. (Required)',
-        validate: githubUN => {
-            if (githubUN) {
+        validate: email => {
+            if (email) {
                 return true;
             } else {
                 console.log('Please enter your GitHub profile link!');
