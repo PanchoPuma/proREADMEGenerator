@@ -10,12 +10,12 @@ const questions = [
     {
         type: 'input',
         name: 'title',
-        message: 'Please provide a project title.  (Required)',
-        validate: nameInput => {
-            if (nameInput) {
+        message: 'Please enter a project title.(Required)',
+        validate: nameValue => {
+            if (nameValue) {
                 return true;
             } else {
-                console.log('Please provide a project title!');
+                console.log('Please enter a project title!');
                 return false;
             }
         }
@@ -25,24 +25,117 @@ const questions = [
     {
         type: 'input',
         name: 'description',
-        message: 'Provide a description of your application.  (Required)',
-        validate: descInput => {
-            if (descInput) {
+        message: 'Please provide a description of your application. (Required)',
+        validate: desValue => {
+            if (desValue) {
                 return true;
             } else {
-                console.log('Please enter a description!');
+                console.log('Please provide a description!');
                 return false;
             }
         }
     },
-        // Installation, 
-        // Usage, 
-        // Contributing
-        // Tests
+    // Installation
+    {
+        type: 'input',
+        name: 'installation',
+        message: 'Please list any required packages to instal your application.',
+        when: ({ content }) => {
+            if (content.indexOf('Installation') > -1) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validate: installValue => {
+            if (installValue) {
+                return true;
+            } else {
+                console.log('Please list the installation instructions!');
+                return false;
+            }
+        }
+    },
+    // Usage
+    {
+        type: 'input',
+        name: 'usage',
+        message: 'Please provide the details to use your application. (Required)',
+        validate: usageValue => {
+            if (usageValue) {
+                return true;
+            } else {
+                console.log('Please provide the details to use your application!');
+                return false;
+            }
+        }
+    },
+    // Contributing
+    {
+        type: 'input',
+        name: 'contributing',
+        message: 'Please include the guidelines for contributing.',
+        when: ({ content }) => {
+            if (content.indexOf('Contributing') > -1) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validate: contributingValue => {
+            if (contributingValue) {
+                return true;
+            } else {
+                console.log('Please include the guidelines for contributing!');
+                return false;
+            }
+        }
+    },
+    // Tests
+    {
+        type: 'input',
+        name: 'tests',
+        message: 'Please include any test information for your application.',
+        when: ({ content }) => {
+            if (content.indexOf('Tests') > -1) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+        validate: testsValue => {
+            if (testsValue) {
+                return true;
+            } else {
+                console.log('Please include any test information required to run tests for your application!');
+                return false;
+            }
+        }
+    },
+    // Validation checkbox 
+    {
+        type: 'checkbox',
+        name: 'content',
+        message: 'Any additional sections you want to include in the README?',
+        choices: [
+            {
+                name: 'Installation',
+                checked: false
+            },
+            {
+                name: 'Contributing',
+                checked: false
+            },
+            {
+                name: 'Tests',
+                checked: false
+            },
+            
+        ]
+    },
 
-    
 
-    // License  
+// License  
         //a badge for that license is added near the top of the README and a notice is added to the section of the README entitled License that explains which license the application is covered under)
     // Questions
         // GitHub username
@@ -50,6 +143,10 @@ const questions = [
         // Email address
             // THEN this is added to the section of the README entitled Questions, with instructions on how to reach me with additional questions
 
+
+
+
+    
             
 
 // TODO: Create a function to write README file
