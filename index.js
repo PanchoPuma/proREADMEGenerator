@@ -95,34 +95,35 @@ const questions = [
     },
 // License  
         //a badge for that license is added near the top of the README and a notice is added to the section of the README
-        // entitled License that explains which license the application is covered under)
+        // entitled License that explains which license the application is covered under) 
         {
-            type: 'checkbox',
+            type: 'list',
             name: 'license',
-            message: 'Please indicate the applicable license (Required)',
-            choices: ['MIT', 'ISC','GNU', 'Apache 2.0',],
+            message: 'Please indicate the license.',
+            choices: ['MIT', 'ISC','GNU', 'Apache 2.0'],
             default: 0,
             validate: licenseChoice => {
                 if (licenseChoice) {
                     return true;
                 } else {
-                    console.log('Please provide license information!');
+                    console.log('Please provide the license!');
                     return false;
                 }
             }
-        }, 
+        },
+
 // Questions
     // GitHub username
         // THEN this is added to the section of the README entitled Questions, with a link to my GitHub profile
     {
         type: 'input',
         name: 'github',
-        message: 'Please enter your GitHub profile link. (Required)',
+        message: 'Please enter your GitHub profile name. (Required)',
         validate: githubUN => {
             if (githubUN) {
                 return true;
             } else {
-                console.log('Please enter your GitHub profile link!');
+                console.log('Please enter your GitHub profile name!');
                 return false;
             }
         }
@@ -138,7 +139,7 @@ const questions = [
             if (email) {
                 return true;
             } else {
-                console.log('Please enter your GitHub profile link!');
+                console.log('Please enter your contact email!');
                 return false;
             }
         }
@@ -161,12 +162,12 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    // fs.writeFile(`./results/${fileName}`, data, err => {
-    //     if (err) {
-    //         throw err
-    //     };
-    //     console.log('README created!')
-    // });
+    fs.writeFile(`./results/${fileName}`, data, err => {
+        if (err) {
+            throw err
+        };
+        console.log('README created!')
+    });
 };
 
 // TODO: Create a function to initialize app
@@ -177,7 +178,7 @@ function init() {
 // Function call to initialize app
 init()
     .then(answers => generateMarkdown(answers))
-    // .then(generatedReadMe => writeToFile('README.md', generatedReadMe))
-    // .catch(err => {
-    //     console.log(err);
-    // });
+    .then(generatedReadMe => writeToFile('README.md', generatedReadMe))
+    .catch(err => {
+        console.log(err);
+    });
