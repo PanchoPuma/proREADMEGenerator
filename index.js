@@ -55,7 +55,7 @@ const questions = [
     {
         type: 'input',
         name: 'usage',
-        message: 'Please provide the details to use your application. (Required)',
+        message: 'Please indicate how to use your application. (Required)',
         validate: usageValue => {
             if (usageValue) {
                 return true;
@@ -83,7 +83,7 @@ const questions = [
     {
         type: 'input',
         name: 'tests',
-        message: 'Please include any test information for your application. (Required)',
+        message: 'Enter what you need to install/run to TEST your application once it is completed. (Required)',
         validate: testsValue => {
             if (testsValue) {
                 return true;
@@ -145,21 +145,7 @@ const questions = [
         }
     },
 ];
-
-// template
-//console.log(`
-//         //     ==============
-//         //     Add New Credit
-//         //     ==============
-//         //     `);
-       
-            
-        
-
-
-    
-            
-
+                 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(`./results/${fileName}`, data, err => {

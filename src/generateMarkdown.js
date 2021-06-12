@@ -47,7 +47,7 @@
         tableContentsArr.forEach((item) => {
             if (item.content) {
                 contentsList += `* [${item.header}](#${(item.header).toLowerCase().split(' ').join('-')})
-                `;
+`;
             }
         });
         return contentsList;
@@ -56,7 +56,7 @@
     // installation section
     const renderInstallationSection = install => {
         if (install) {
-            return `To use this application, please install: ${install}`
+            return `To install this application, please install: ${install}`
         } else {
             return '';
         }
@@ -64,13 +64,13 @@
     // usage section
     const renderUsageSection = usage => {
         if (usage) {
-            return `${usage}`
+            return `To use the application: ${usage}`
         }
     };
     // Contributing section
     const renderContributingSection = contributing => {
       if (contributing) {
-          return `${contributing}`
+          return `If you wish to contibute to the project: ${contributing}`
       }
   };
     // Test
@@ -111,6 +111,10 @@ function generateMarkdown(data) {
             content: renderLicenseSection(data.license)
         },
         {
+          header: 'License Link',
+          content: renderLicenseLink (data.license)
+      },
+        {
             header: 'Contributing', 
             content: renderContributingSection(data.contributing)
         },
@@ -127,10 +131,10 @@ function generateMarkdown(data) {
     // adds each README section if contents for the section exists
     detailSectionArr.forEach((sectionItem) => {
         if (sectionItem.content) {
-        readmeContents += `### ${sectionItem.header}
-        ${sectionItem.content}
-    
-        `;
+        readmeContents += 
+        `### ${sectionItem.header}
+  ${sectionItem.content}
+`;
         }
     });
 
@@ -138,15 +142,13 @@ return `# ${data.title}
 ${renderLicenseBadge(data.license)}
 
 ## Description
-${renderDescriptionSection(data.description)}
+  ${renderDescriptionSection(data.description)}
+
 ## Contents
 ${TableOfContents(detailSectionArr)}
 ${readmeContents}
 
 `;
-
-    
- 
 }
 
 module.exports = generateMarkdown;
