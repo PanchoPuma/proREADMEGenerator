@@ -9,7 +9,9 @@ Please be advised this is not a website app, this needs to be installed in order
 
 ## Screenshot
 
-![ScreenShot](/assets/images/sample.jpeg)
+![ScreenShot1](/assets/images/sample1.jpeg)
+![ScreenShot2](/assets/images/sample2.jpeg)
+![ScreenShot3](/assets/images/sample3.jpeg)
 
 
 
